@@ -1,15 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
+//NEED THIS FOR UI MANIPULATION
+using UnityEngine.UI;
 
 public class playerScript : MonoBehaviour {
 
 	//variables
-	public int health;
-	public int ammo;
-	public bool keyCard;
-
-	public GameObject healthGUI;
+	public GameObject healthBar;
 	public Sprite[] healthImage;
+	public int health;
+
+	public GameObject ammoBar;
+	public Sprite[] ammoImage;
+	public int ammo;
+
+	public GameObject inventory;
+	public Sprite[] inventoryImage;
+	public bool keyCard;
+	public int keyCardNum;
 
 	bool vulnerable;
 	float bufferTime;
@@ -20,6 +28,7 @@ public class playerScript : MonoBehaviour {
 		health = 7;
 		ammo = 20;
 		keyCard = false;
+		keyCardNum = 0;
 		vulnerable = true;
 		bufferTime = 0.0f;
 	
@@ -28,7 +37,23 @@ public class playerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		//firing
+		if(Input.GetButtonDown("Fire1"))	{
 
+			//subtract from bulletCount
+			if(ammo > 0)
+			{
+				//test
+				Debug.Log ("player fires...");
+
+				ammo -= 1;
+
+				//update the ammo GUI image
+				ammoBar.GetComponent<Image>().sprite = ammoImage[ammo];
+
+			}
+
+		}
 
 		//buffer for enemy hits
 		if (vulnerable == false) {
@@ -53,20 +78,39 @@ public class playerScript : MonoBehaviour {
 		if (other.gameObject.tag == "HealthPickup") {
 
 			health = 7;
+			//test
+			Debug.Log("refilled health...");
+			//update the health GUI
+			healthBar.GetComponent<Image>().sprite = healthImage[health];
 
 		}
 
 		//restore ammo
-		if (other.gameObject.tag == "AmmoPickup") {
+		if (other.gameObject.tag == "AmmoPickup" && ammo < 30) {
 
 			ammo += 10;
+			if (ammo >= 30) {
+
+				ammo = 30;
+
+			}
+			//test
+			Debug.Log("got 10 ammo...");
+			//update the ammo GUI
+			ammoBar.GetComponent<Image>().sprite = ammoImage[ammo];
 
 		}
 			
 		//pickup keyCard
-		if (other.gameObject.tag == "KeyCard") {
+		if (other.gameObject.tag == "KeyCard" && keyCard == false) {
 
+			keyCardNum = 1;
+			//test
+			Debug.Log("got the KeyCard...");
+			//update the ammo GUI
+			inventory.GetComponent<Image>().sprite = inventoryImage[keyCardNum];
 			Destroy (other.gameObject);
+			keyCard = true;
 
 		}
 
@@ -74,7 +118,9 @@ public class playerScript : MonoBehaviour {
 		if (other.gameObject.tag == "Enemy" && vulnerable == true) {
 
 			health -= 1;
-			vulnerable = false;
+			//update the health GUI
+			healthBar.GetComponent<Image>().sprite = healthImage[health];
+			//vulnerable = false;
 
 		}
 
