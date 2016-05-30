@@ -8,6 +8,8 @@ TagManager:
   - AmmoPickup
   - KeyCard
   - Enemy
+  - PlayerBullet
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

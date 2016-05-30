@@ -13,6 +13,8 @@ public class playerScript : MonoBehaviour {
 	public GameObject ammoBar;
 	public Sprite[] ammoImage;
 	public int ammo;
+	public Rigidbody bullet;
+	public Transform firePoint;
 
 	public GameObject inventory;
 	public Sprite[] inventoryImage;
@@ -45,7 +47,8 @@ public class playerScript : MonoBehaviour {
 			{
 				//test
 				Debug.Log ("player fires...");
-
+				Rigidbody tempBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as Rigidbody;
+				tempBullet.velocity = transform.forward * 30;
 				ammo -= 1;
 
 				//update the ammo GUI image
@@ -121,6 +124,18 @@ public class playerScript : MonoBehaviour {
 			//update the health GUI
 			healthBar.GetComponent<Image>().sprite = healthImage[health];
 			//vulnerable = false;
+
+			Debug.Log("got hit...");
+
+		}
+
+		if (other.tag == "EnemyBullet") {
+
+			health -= 1;
+			//update the health GUI
+			healthBar.GetComponent<Image>().sprite = healthImage[health];
+
+			Debug.Log("got hit...");
 
 		}
 
