@@ -221,7 +221,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 462982, guid: aa8154ef03aa0594da24f66ee464ef9f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 8.038402
+      value: 8.18
       objectReference: {fileID: 0}
     - target: {fileID: 462982, guid: aa8154ef03aa0594da24f66ee464ef9f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -246,6 +246,30 @@ Prefab:
     - target: {fileID: 462982, guid: aa8154ef03aa0594da24f66ee464ef9f, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11452808, guid: aa8154ef03aa0594da24f66ee464ef9f, type: 2}
+      propertyPath: mySpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11452808, guid: aa8154ef03aa0594da24f66ee464ef9f, type: 2}
+      propertyPath: minHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11452808, guid: aa8154ef03aa0594da24f66ee464ef9f, type: 2}
+      propertyPath: maxHealth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 14331188, guid: aa8154ef03aa0594da24f66ee464ef9f, type: 2}
+      propertyPath: m_Center.y
+      value: 1.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 13689710, guid: aa8154ef03aa0594da24f66ee464ef9f, type: 2}
+      propertyPath: m_Center.y
+      value: 1.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 9513446, guid: aa8154ef03aa0594da24f66ee464ef9f, type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: aa8154ef03aa0594da24f66ee464ef9f, type: 2}

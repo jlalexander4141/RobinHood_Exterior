@@ -4,6 +4,7 @@ using System.Collections;
 public class enemyMeleeScript : MonoBehaviour {
 
 	//variables
+	public float mySpeed;
 	public Transform myTarget;
 	public float attackDistance;
 	public float hitRate;
@@ -40,14 +41,11 @@ public class enemyMeleeScript : MonoBehaviour {
 
 		if (dist <= attackDistance) {
 
-			if(Time.time > hitTime){
-
-				transform.LookAt (myTarget);
-
-
-				hitTime = Time.time + hitRate;
-
-			}
+			CharacterController controller = GetComponent<CharacterController> ();
+			transform.LookAt (new Vector3 (myTarget.position.x, transform.position.y, myTarget.position.z));
+			Vector3 forward = transform.TransformDirection (Vector3.forward);
+			float curSpeed = mySpeed * Time.deltaTime;
+			controller.SimpleMove (forward * curSpeed);
 
 		}
 
