@@ -10,6 +10,8 @@ public class healthPickupScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		//new Vector3 (transform.rotation.x, transform.rotation.y += (10.0f * Time.deltaTime), transform.rotation.z);
 	
 	}
 }
