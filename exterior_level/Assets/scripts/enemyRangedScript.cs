@@ -43,9 +43,9 @@ public class enemyRangedScript : MonoBehaviour {
 
 		if (dist <= attackDistance) {
 
-			if(Time.time > fireTime){
+			transform.LookAt (myTarget);
 
-				transform.LookAt (myTarget);
+			if(Time.time > fireTime){
 
 				Rigidbody tempBullet = Instantiate(bullet, firePoint.position, firePoint.rotation) as Rigidbody;
 

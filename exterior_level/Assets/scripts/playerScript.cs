@@ -86,6 +86,8 @@ public class playerScript : MonoBehaviour {
 			//update the health GUI
 			healthBar.GetComponent<Image>().sprite = healthImage[health];
 
+			Destroy (other.gameObject);
+
 		}
 
 		//restore ammo
@@ -101,6 +103,8 @@ public class playerScript : MonoBehaviour {
 			Debug.Log("got 10 ammo...");
 			//update the ammo GUI
 			ammoBar.GetComponent<Image>().sprite = ammoImage[ammo];
+
+			Destroy (other.gameObject);
 
 		}
 			
@@ -136,6 +140,12 @@ public class playerScript : MonoBehaviour {
 			healthBar.GetComponent<Image>().sprite = healthImage[health];
 
 			Debug.Log("got hit...");
+
+		}
+
+		if (other.tag == "WinBox" && keyCard == true) {
+
+			Application.LoadLevel ("winScreen");
 
 		}
 

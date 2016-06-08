@@ -8,7 +8,9 @@ public class enemyMeleeScript : MonoBehaviour {
 	public Transform myTarget;
 	public float attackDistance;
 	public float hitRate;
-	private float hitTime = 0.0f;
+	public GameObject healthPickup;
+	public GameObject ammoPickup;
+	private int num;
 
 	public float enemyHealth, minHealth, maxHealth;
 
@@ -29,6 +31,8 @@ public class enemyMeleeScript : MonoBehaviour {
 	void Start () {
 
 		enemyHealth = Random.Range (minHealth, maxHealth);
+
+		num = Random.Range (1, 2);
 
 		myTarget = GameObject.FindWithTag ("Player").transform;
 	
@@ -51,6 +55,18 @@ public class enemyMeleeScript : MonoBehaviour {
 
 		//kill enemy
 		if (enemyHealth <= 0.0f){
+
+			if (num == 1) {
+				
+				GameObject tempDrop = Instantiate (healthPickup, transform.position, transform.rotation) as GameObject;
+
+			}
+
+			if (num == 2) {
+
+				GameObject tempDrop = Instantiate (ammoPickup, transform.position, transform.rotation) as GameObject;
+
+			}
 
 			Destroy (gameObject);
 
